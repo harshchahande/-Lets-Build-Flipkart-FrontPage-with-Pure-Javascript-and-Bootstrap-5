@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project
+
+    </title>
+</head>
+
+<body>
+
+
+    <script>
+        // =============== link ======================
+        // 1. Function Defination
+        function setAttributeFromObject(element, obj) { //form arg/formal parameye
+            for (const key in obj) {
+                element.setAttribute(key, obj[key]);
+            }
+            // Function may return something
+            return element;
+        }
+        // =============== script ======================
+
+        // function defination
+        function createMyElement(elem) {
+            return document.createElement(elem)
+        }
+
+        var link = createMyElement("link")
+        var script = createMyElement("script")
+        // DRY
+
+
+        var myObject = {
+            "rel": "stylesheet",
+            "href": 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH'
+        }
+
+        var myScriptObject = {
+            /*
+            1. p:v
+            2. Methods
+            */
+            "src": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+
+        }
+        // DRY
+
+        console.log(myObject)
+        console.log(typeof myObject);
+        // *************************************
+        // How to can convert a JS object to JS Array
+        // *******************************************
+        // {} => [].
+        var myarr = Array.from(myObject)
+        // *******************************
+        // console.log(myarr);
+        // console.log(typeof myarr)
+        // **********************************
+
+
+        console.log(link);
+        // 2. Function Calling
+        var link = setAttributeFromObject(link, myObject)// actual argument/parameter
+
+        var s = setAttributeFromObject(script, myScriptObject)
+
+        console.log(s)
+
+        // *********************************
+        //  function defination
+        //this is my iser defined function
+        function appendTOHead(elem) {
+
+            document.head.append(elem);
+
+
+        }
+
+        // DRY 
+        appendTOHead(link);
+        appendTOHead(s)
+
+
+        // ======================= links bootstrap ============ end==================
+
+        // ================ website header =================
+
+
+        // ====================== creat element ================================
+
+        var h = createMyElement('header');
+
+        var headerTop = createMyElement('div');
+        var headerTopInner = createMyElement('div');
+
+        var headerBottom = createMyElement('div');
+        var headerBottomInner = createMyElement('div');
+        // ====================== End ================================
+
+        // ====================== creat attribute================================
+        headerTop = setAttributeFromObject(headerTop, { "class": "a_headetop" })
+        headerBottom = setAttributeFromObject(headerBottom, { "class": "a_headerBottom" })
+
+        headerTopInner.setAttribute('class', 'container');
+
+        headerBottomInner = setAttributeFromObject(headerBottomInner, { "class": "container" });
+
+        // headerTop.classList.add('container');
+        // headerBottom.classList.add('container');
+
+        console.log(headerTop)
+        console.log(headerBottom)
+
+        console.log(headerTopInner)
+
+
+        h = setAttributeFromObject(h, { "class": "a_header" });
+        console.log(h)
+        // ====================== End ================================
+
+        // ====================== appendChild ================================
+        headerBottom.append(headerBottomInner);
+
+        headerTop.append(headerTopInner);
+        h.appendChild(headerTop);
+        h.appendChild(headerBottom);
+
+
+        document.body.append(h)
+        // ====================== End ================================
+
+        // select DOM elelemtn
+
+        // Method 1 .
+        // querSelect()
+
+        //DRY
+
+        function select(selector) {
+            return document.querySelector(selector)
+        }
+
+        var styleobject = {
+            "height": '169px',
+            "border": '1px dashed #000'
+        }
+
+        // select('.a_header').style.height = '169px';
+        // select('.a_header').style.border = '1px dashed #000';
+
+        select('.a_headetop').style.height = '58px';
+        select('.a_headetop').style.border = '1px dashed #2874F0';
+        select('.a_headetop').style.backgroundColor = ' #2874F0';
+
+        select('.a_headerBottom').style.height = '111px';
+        select('.a_headerBottom').style.border = '1px dashed green';
+        select('.a_headerBottom').style.backgroundColor = 'white';
+
+
+        select('.a_headetop > div.container').style.border = '1px dashed red';
+        select('.a_headetop > div.container').style.height = '100%';
+
+
+        document.querySelector('.a_headerBottom > div.container').style.height = '100%';
+        document.querySelector('.a_headerBottom > div.container').style.border = '1px dashed green';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // **************************************************************************************
+        // //step   1 function defination
+        // function setAttributeFromObject(element, obj) {//Forma Arg/Formal Parameter
+
+        //     for (const key in obj) {
+        //         element.setAttribute(key, obj[key]);
+        //     }
+
+
+        //     // Function my return something
+
+        //     return element;
+
+        // }
+        // // 1. Function Defination
+        // // This is my user Defined Function
+
+        // function createMyElement(elem) {
+        //     return document.createElement(elem);
+        // }
+
+        // var link = document.createElement('link');
+
+        // var script = createMyElement('script')
+
+
+        // var myObject = {
+        //     "rel": "stylesheet",
+        //     "href": 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous'
+        // }
+
+        // var myScriptObject = {
+
+        //     /*
+        // 1.p:v
+        // 2.methods
+        //     */
+
+        //     "src": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+
+
+
+        // }
+
+
+        // // DRY
+        // console.log(typeof myObject)
+        // console.log(myObject)
+        // // ======================
+        // //  how to can convert a JS Object to JS Array
+
+        // // console.log(myarr);
+        // // console.log(typeof myarr);
+
+
+
+        // // 2 .Function Calling
+        // var link = setAttributeFromObject(link, myObject)//Actual Argument / Parameter
+
+
+
+        // console.log(link);
+        // // ***********************************
+        // // 2.Function Calling
+        // var link = setAttributeFromObject(link, myObject)// Actual Argument/Parameter
+
+        // var s = setAttributeFromObject(script, myScriptObject);
+
+
+        // // ==============================
+        // //******** attribute add
+        // // link.setAttribute('rel', 'stylesheet');
+        // // //
+        // // link.setAttribute('href', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous');
+
+        // // ************ end
+
+
+        // // -----------------------------------
+        // // 1. Fucntion Defination
+        // // This is my user Defined function
+        // function appendToHead(elem) {
+        //     document.head.append(elem);
+        // }
+        // //DRY
+
+        // appendToHead(link);
+        // appendToHead(s);
+
+
+        // // -----------------------------------
+        // var h = createMyElement('header');
+
+        // var headerTop = createMyElement('div');
+
+        // var headerBottom = createMyElement('div');
+        // // ============ attribute=====================
+
+
+
+        // headerTop = setAttributeFromObject(headerTop, {
+        //     "class": "a_headertop"
+        // });
+        // headerBottom = setAttributeFromObject(headerBottom, {
+        //     "class": "a_headerBottom"
+        // });
+        // // ++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // // headerTop.
+
+        // headerTop.classList.add('container');
+        // console.log(headerTop);
+        // console.log(headerBottom);
+
+
+
+        // // ++++++++++++++++++++++++
+
+
+        // h = setAttributeFromObject(h, { "class": "a_hader" });
+
+
+        // h.appendChild(headerTop);
+        // document.body.append(h)
+        // document.body.append(headerTop)
+        // document.body.append(headerBottom)
+
+
+
+        // //Select DOM Element
+        // //Method 1.
+        // //querySelector();
+
+        // // DRY
+
+        // function select(selector) {
+
+        //     return document.querySelector(selector);
+        // }
+
+        // var styleobject = {
+        //     "height": '169px',
+        //     'border': '1px dashed #000',
+        // }
+
+
+
+
+
+
+
+
+        // select('.a_hader').style.height = '169px';
+        // select('.a_hader').style.border = '1px dashed red';
+
+        // select('.a_headertop').style.height = '58px';
+        // select('.a_headertop').style.border = '1px dashed red';
+
+        // select('.a_headerBottom').style.height = '111px';
+        // select('.a_headerBottom').style.backgroundColor = 'green';
+        // select('.a_headerBottom').style.border = '1px solid green'; // Corrected
+
+
+        // // *******************************************************************
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
