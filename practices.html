@@ -13,11 +13,99 @@
 
     <script>
 
-        var link = document.createElement('link');
-        link.setAttribute('href', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous')
-        console.log(link)
 
-        document.head.appendChild(link)
+        var h = document.createElement("header");
+
+        document.body.append(h)
+
+        h.setAttribute('class', 'you')
+        console.log(h)
+        // h.style.height = "300px"
+        // h.style.backgroundColor = "blue"
+        function createMyElement(create) {
+            return document.createElement(create)
+        }
+
+        function appedToBody(elem) {
+            h.appendChild(elem)
+        }
+
+
+
+
+        var d1 = createMyElement("div");
+        var d2 = createMyElement("div");
+        var d3 = createMyElement("div");
+        var d4 = createMyElement("div");
+
+        d1.setAttribute('class', 's1');
+        d2.setAttribute('class', 's2');
+        d3.setAttribute('class', 's3');
+        d4.setAttribute('class', 's4');
+
+        appedToBody(d1);
+        appedToBody(d2);
+        appedToBody(d3);
+        appedToBody(d4);
+
+        console.log(d1)
+        console.log(d2)
+        console.log(d3)
+        console.log(d4)
+
+
+        function select1(sel) {
+            return document.querySelector(sel)
+        }
+
+        var styObj = {
+            "height": "100px",
+            "backgroundColor": 'red',
+            'border': '2px solid green'
+        }
+
+        var myStyle = {
+            backgroundColor: "blue",
+            height: "12255px"
+        }
+
+        function applyStyleToElement(sel, styObj) {
+
+            for (var key in styObj) {
+                console.log(styObj[key])
+                // document.querySelector(sel).style[key] = styObj[key];
+            }
+        }
+
+        applyStyleToElement("s1", styObj);
+
+
+
+
+
+
+
+        // select1('.s1').style.height = "100px";
+        // select1('.s1').style.backgroundColor = "pink";
+
+
+
+
+
+
+
+
+        // d1.style.height = "100px";
+        // d1.style.backgroundColor = "red";
+        // d2.style.height = "100px";
+        // d2.style.backgroundColor = "blue";
+        // d3.style.height = "100px";
+        // d3.style.backgroundColor = "yellow";
+        // d4.style.height = "100px";
+        // d4.style.backgroundColor = "green";
+
+
+
 
 
     </script>

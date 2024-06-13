@@ -13,6 +13,7 @@
 
 
     <script>
+        // ++++++++++++++++++++++++++++++++++++ header++++++++++++++++++++++++++
         // =============== link ======================
         // 1. Function Defination
         function setAttributeFromObject(element, obj) { //form arg/formal parameye
@@ -31,6 +32,20 @@
 
         var link = createMyElement("link")
         var script = createMyElement("script")
+        // ================ footer ===============
+
+
+        // 1. function defination
+        // i am creating a user defined function
+
+        function appedToBody(elem) {
+            document.body.append(elem);
+
+            //this function will not return anything
+        }
+
+        // ============== footer end=======
+
         // DRY
 
 
@@ -129,8 +144,8 @@
         h.appendChild(headerTop);
         h.appendChild(headerBottom);
 
-
-        document.body.append(h)
+        appedToBody(h)
+        // document.body.append(h)
         // ====================== End ================================
 
         // select DOM elelemtn
@@ -168,7 +183,9 @@
         document.querySelector('.a_headerBottom > div.container').style.height = '100%';
         document.querySelector('.a_headerBottom > div.container').style.border = '1px dashed green';
 
+        // ++++++++++++++++++++++++++++++++++++ header End ++++++++++++++++++++++++++
 
+        // ++++++++++++++++++++++++++++++++++++ footer ++++++++++++++++++++++++++
 
 
 
@@ -177,207 +194,289 @@
 
 
 
+        // ++++++++++++++++++++++++++++++++++++ footer End ++++++++++++++++++++++++++
 
+        // DRY
 
+        // ====================== creat element ================================
+        var f = document.createElement("footer");
 
+        var main = document.createElement('div')
 
+        console.log(f)
+        console.log(main)
 
 
+        // ====================== creat element end ================================
 
 
+        // ====================== creat attribute================================
 
+        main.setAttribute('class', "a_main");
 
+        // ====================== creat attribute end ================================
 
+        // ===== down traversing======
 
 
 
 
+        // ====================== appendChild ================================
 
 
+        appedToBody(main);
+        appedToBody(f);
+        //Now my code
+        // document.body.append(f)
 
 
 
+        // ====================== appendChild end ================================
+        var myStyle = {
+            backgroundColor: "blue",
+            height: "12255px"
+        }
 
+        //1.Function defination
+        function applyStyleToElement(selector, styleObject) {
+            //How to access the property of an object
 
+            // 1.object.property
+            console.log('the value of bc is ', myStyle.backgroundColor);
 
+            // 2.object["property"]
+            console.log('the value of bc is ', myStyle["height"]);
 
 
-        // **************************************************************************************
-        // //step   1 function defination
-        // function setAttributeFromObject(element, obj) {//Forma Arg/Formal Parameter
+            //3.object[expretion]
+            let x = 'height';
+            console.log('the value of bc is ', myStyle[x]);
 
-        //     for (const key in obj) {
-        //         element.setAttribute(key, obj[key]);
-        //     }
 
+            for (const key in styleObject) {
+                // console.log(key);
+                console.log(styleObject[key]);
 
-        //     // Function my return something
+                document.querySelector(selector).style[key] = styleObject[key];
+            }
 
-        //     return element;
 
-        // }
-        // // 1. Function Defination
-        // // This is my user Defined Function
+        }
 
-        // function createMyElement(elem) {
-        //     return document.createElement(elem);
-        // }
+        //object.member
 
-        // var link = document.createElement('link');
+        // 2.function calling
+        applyStyleToElement('.a_main', myStyle)
 
-        // var script = createMyElement('script')
 
 
-        // var myObject = {
-        //     "rel": "stylesheet",
-        //     "href": 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous'
-        // }
 
-        // var myScriptObject = {
+        // document.querySelector('.a_main').style.backgroundColor = 'blue';
+        // document.querySelector('.a_main').style.height = '12255px';
 
-        //     /*
-        // 1.p:v
-        // 2.methods
-        //     */
 
-        //     "src": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        document.querySelector('footer').setAttribute('class', "myFooter");
 
+        var myStyle = {
+            backgroundColor: "orange",
 
+        }
 
-        // }
 
+        applyStyleToElement('footer', myStyle);
 
-        // // DRY
-        // console.log(typeof myObject)
-        // console.log(myObject)
-        // // ======================
-        // //  how to can convert a JS Object to JS Array
+        var footerTop = createMyElement('div');
 
-        // // console.log(myarr);
-        // // console.log(typeof myarr);
+        console.log(footerTop);
 
+        // 1.function defination
+        function appendToElement(elem, selector) {// source and destination are formal arg
+            document.querySelector(selector).append(elem);
 
 
-        // // 2 .Function Calling
-        // var link = setAttributeFromObject(link, myObject)//Actual Argument / Parameter
+        }
 
+        // 2. Function Calling
+        appendToElement(document.createElement('div'), 'footer');
+        appendToElement(document.createElement('div'), 'footer');
 
+        var ft = document.querySelector('footer > div:first-child ');
 
-        // console.log(link);
-        // // ***********************************
-        // // 2.Function Calling
-        // var link = setAttributeFromObject(link, myObject)// Actual Argument/Parameter
+        ft.innerHTML = "FooterTop";
 
-        // var s = setAttributeFromObject(script, myScriptObject);
+        ft.style.height = '2722px';
+        ft.style.backgroundColor = 'purple';
 
+        var fb = document.querySelector('footer > div:last-child');
+        fb.innerHTML = "footerBottor";
 
-        // // ==============================
-        // //******** attribute add
-        // // link.setAttribute('rel', 'stylesheet');
-        // // //
-        // // link.setAttribute('href', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous');
+        ft.style.height = '497px';
+        ft.style.backgroundColor = 'red';
 
-        // // ************ end
 
 
-        // // -----------------------------------
-        // // 1. Fucntion Defination
-        // // This is my user Defined function
-        // function appendToHead(elem) {
-        //     document.head.append(elem);
-        // }
-        // //DRY
 
-        // appendToHead(link);
-        // appendToHead(s);
+        // =-=-
+        //var are global varibale global scope
+        var myStudents = {
+            students: [{ name: "Avinash" }, { name: "Abhishek" }]//Array of
+        }
 
 
-        // // -----------------------------------
-        // var h = createMyElement('header');
 
-        // var headerTop = createMyElement('div');
+        var jsObj = {
+            //1. Property:Value
+            fname: "Anil",
+            lname: "Dollor",
+            addr: "Neemuch MP",
+            age: 30,
+            //2. Function/method
+            getFullName: function () {
+                console.log(this.fname)
+            },
+            getAddress: function () {
+                // to return something
+                return this.addr;
+            },
+            getMyStudents: function () {
+                //To return something
+                return myStudents;// so i am returnin an object
+            }
 
-        // var headerBottom = createMyElement('div');
-        // // ============ attribute=====================
+        }
 
+        console.log(jsObj);
+        console.log('before Remove', jsObj.company);
+        // delete object.propertyName
 
+        delete jsObj.company;
+        console.log('After Remove ' + jsObj.company);
+        console.log(jsObj);
 
-        // headerTop = setAttributeFromObject(headerTop, {
-        //     "class": "a_headertop"
-        // });
-        // headerBottom = setAttributeFromObject(headerBottom, {
-        //     "class": "a_headerBottom"
-        // });
-        // // ++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        // // headerTop.
 
-        // headerTop.classList.add('container');
-        // console.log(headerTop);
-        // console.log(headerBottom);
 
+        //object.method();
+        jsObj.getFullName()
+        //Object.property
+        console.log(jsObj.lname)
 
+        console.log(jsObj.age);
 
-        // // ++++++++++++++++++++++++
+        console.log(jsObj.getAddress());
 
+        let ss = jsObj.getMyStudents();
 
-        // h = setAttributeFromObject(h, { "class": "a_hader" });
+        console.log(typeof ss);
+        console.log(ss.students);
 
+        ss.students.forEach((currentValue, index, arr) => {
+            console.log('Hello', currentValue.name);
+        })
 
-        // h.appendChild(headerTop);
-        // document.body.append(h)
-        // document.body.append(headerTop)
-        // document.body.append(headerBottom)
+        //How to iterate of Array of object [{},{}]
 
+        //1.{}
+        // 2.[]
+        // 3.[{},{}] // Array of object ForEach
 
 
-        // //Select DOM Element
-        // //Method 1.
-        // //querySelector();
+        // inteview quetion
 
-        // // DRY
+        // How you can remove a property from a JS object
 
-        // function select(selector) {
+        // Lets create some nav element
 
-        //     return document.querySelector(selector);
-        // }
+        // ************************* NavBar ********************
 
-        // var styleobject = {
-        //     "height": '169px',
-        //     'border': '1px dashed #000',
-        // }
+        var u = document.createElement("ul");
+        u.setAttribute('class', "nav")
 
+        console.log(u)
 
 
 
+        var o = {
+            count: 4,
+            createElement: function (elem) {
+                return document.createElement(elem);
+            }
+        }
 
+        // console.log(o.createElement('li'));
 
+        for (let index = 0; index < o.count; index++) {
 
 
-        // select('.a_hader').style.height = '169px';
-        // select('.a_hader').style.border = '1px dashed red';
+            var l = o.createElement('li');
+            var a = o.createElement('a');
 
-        // select('.a_headertop').style.height = '58px';
-        // select('.a_headertop').style.border = '1px dashed red';
+            a.classList.add('nav-link');
+            a.setAttribute('href', "#");
+            a.textContent = index;
+            a.style.color = 'red';
 
-        // select('.a_headerBottom').style.height = '111px';
-        // select('.a_headerBottom').style.backgroundColor = 'green';
-        // select('.a_headerBottom').style.border = '1px solid green'; // Corrected
+            if (index == 0) {
+                a.classList.add('active');
+            }
 
 
-        // // *******************************************************************
+            l.append(a);
 
 
+            l.setAttribute('class', 'nav-item');
+            u.append(l)
 
 
+            // console.log(o.createElement('li'));
+        }
 
+        console.log(u)
 
+        document.querySelector('.a_headetop > div.container').append(u)
 
+        console.log(document.querySelector('.a_headetop > div.container > ul > li:nth-child(2) > a'));
 
+        let a2 = document.querySelector('.a_headetop > div.container > ul > li:nth-child(2) > a');
+        a2.remove();
 
 
-    </script>
+        var f = `<form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>`
 
-</body>
 
-</html>
+        document.querySelector('.a_headetop > div.container > ul > li:nth-child(2)').innerHTML = f;
+
+
+        var wrapper = document.createElement('div');
+        wrapper.innerHTML = ''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
